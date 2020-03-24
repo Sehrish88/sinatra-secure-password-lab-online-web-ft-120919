@@ -16,10 +16,10 @@ class ApplicationController < Sinatra::Base
     erb :signup
   end
 
-  post "/signup" do
-    #your code here
-
-  end
+ post "/signup" do
+    if params[:username].empty?
+      redirect to '/failure'
+   end
 
   get '/account' do
     @user = User.find(session[:user_id])
